@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Counter</title>
-
     <!-- styles -->
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -21,6 +20,35 @@
       </div>
     </main>
     <!-- javascript -->
-    <script src="app.js"></script>
+    <script src="app.js">// set inital value to zero
+      let count = 0;
+      // select value and buttons
+      const value = document.querySelector("#value");
+      const btns = document.querySelectorAll(".btn");
+
+      btns.forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+          const styles = e.currentTarget.classList;
+          if (styles.contains("decrease")) {
+            count--;
+          } else if (styles.contains("increase")) {
+            count++;
+          } else {
+            count = 0;
+          }
+
+          if (count > 0) {
+            value.style.color = "green";
+          }
+          if (count < 0) {
+            value.style.color = "red";
+          }
+          if (count === 0) {
+            value.style.color = "#222";
+          }
+          value.textContent = count;
+        });
+      });
+  </script>
   </body>
 </html>
